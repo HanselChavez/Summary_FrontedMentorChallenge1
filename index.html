@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Hanken+Grotesk">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | Results summary component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        html{
+            box-sizing: border-box;
+            font-family: Hanken Grotesk ,sans-serif;   
+        }
+        body{          
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+        }
+        p{
+            font-size: 18px;
+        }
+        *,*::before,*::after{
+            text-align: center;
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+        .attribution {                
+            margin: 20px auto;
+            font-size: 11px;
+        }
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+        .m-auto{
+            margin: 0 auto;
+        }
+        .container{
+            width: 100% ;
+            max-height: 100%;
+        }
+        .bg-white{
+            background-color: white;            
+            display: flex;
+            flex-direction: column;            
+        }      
+        .card{
+            min-width: 280px;
+            padding: 30px;        
+        }
+        .card:first-child{
+            border-radius: 0 0 20px 20px;
+            background: linear-gradient(to bottom,hsl(252, 100%, 67%),
+            hsl(241, 81%, 54%));
+        }
+        
+        @media (min-width: 560px) {
+            .bg-white{
+                flex-direction: row;
+                border-radius: 20px;
+                box-shadow: 10px 10px 15px hsl(221, 100%, 96%);
+            }
+            body{
+                 justify-content: center;  
+            }
+            .card{
+                max-width: 280px;
+            }
+            .container{
+                max-width: 560px;
+                max-height: 400px;
+            }
+            .card:first-child{
+                border-radius: 20px;        
+            }
+        }
+        .text-white{
+            color: hsl(0,0%,100%);
+        }
+        .circle{
+            width: 150px;
+            height: 150px;
+            color: hsl(241, 100%, 89%);            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(78, 33, 202, 0.842), hsla(241, 72%, 46%, 0.034));
+            border-radius: 50%;          
+        }
+
+        .circle span{            
+            line-height: 1;
+            font-weight: 800;  
+        }
+        .pale-blue{
+            color: hsla(222, 100%, 96%, 0.719);
+        }
+        .pale-blue-2{
+            color:  rgb(161, 161, 161);
+        }
+        .title{
+            margin-bottom: 1.4em;
+        }
+        .mb-23{
+            margin-bottom: 23px;
+        }
+        .mb-8{
+            margin-bottom: 8px;
+        }
+        .mb-15{
+            margin-bottom: 15px;
+        }
+        .text-5xl{
+            font-size: 5em;
+        }
+        .text-xl{
+            font-size: 1.5em;
+        }
+        .text-x{
+            font-size: 1.2em;
+        }
+        .text-m{
+            font-size: 0.9em;
+        }
+        .text-left{
+            text-align: left;
+        }
+        .w-full{
+            width: 100%;
+        }
+        .button{
+            background-color: hsl(224, 30%, 27%);
+            cursor: pointer;
+            padding: 14px;
+            border-radius: 25px;            
+            border: none;
+        }
+        .button:hover{
+            background: linear-gradient(to bottom,hsl(252, 100%, 67%),
+            hsl(241, 81%, 54%));            
+        }
+        
+        .px-15{
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .py-12{
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .rounded-sm{
+            border-radius: 10px;
+        }
+        .light-red{
+            background-color:hsla(0, 100%, 67%, 0.08);
+            color: hsl(0, 100%, 67%);
+        }
+        .orangey-yellow{
+            background-color:hsla(39, 100%, 56%, 0.08);
+            color: hsl(39, 100%, 56%);
+        }
+        .green-teal{
+            background-color:hsla(166, 100%, 37%, 0.08);
+            color: hsl(166, 100%, 37%);
+        }
+        .cobalt-blue{
+            background-color:hsla(234, 85%, 45%, 0.08);
+            color: hsl(234, 85%, 45%);
+        }
+        .summary{
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .sumary-content{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dark-gray-blue{
+            color: hsl(224, 30%, 27%);
+        }
+        .flex{
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+        .font-bold{
+            font-weight: 700;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="bg-white container m-auto">
+        <div class="card">
+            <h1 class="title pale-blue text-x">Your Result</h1>
+            <p class="circle mb-23 text-m m-auto"><span class="text-white text-5xl">76</span> of 100 </p>
+            <h2 class="text-white text-xl mb-8">Great</h2>
+            <p class="pale-blue text-m">You scored higher than 65%
+            of the people who
+            have taken these tests.</p>
+        </div>
+        <div class="card">
+            <h2 class="text-x mb-15 text-left">Summary</h2>
+            <div id="summary" class="summary">
+            </div>   
+            <button  type="button"
+            class="button w-full text-white font-bold" >
+                Continue
+            </button>
+        </div>
+    </section>       
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Hansel Chavez Garcia</a>.
+    </div>
+    
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded',async () =>{
+        const sumaries = await getSumaries();
+        showSumaries(sumaries);
+    });
+    const showSumaries= (array)=>{
+        const summary = document.querySelector('#summary');
+        array.forEach(element => {
+            const {score,icon,category,color} = element;
+            const divSumary = document.createElement('div');
+            divSumary.classList.add(`${color}`,'w-full','rounded-sm','px-15','py-12','sumary-content');
+
+            const catergoryElement = document.createElement('p');
+            catergoryElement.classList.add('text-m');
+            catergoryElement.textContent = category;
+            const iconElement = document.createElement('img');
+            iconElement.src = `${icon}`; 
+            iconElement.alt = category+'-icon';
+
+            const titleIcon = document.createElement('div');
+            titleIcon.classList.add('flex')
+            titleIcon.appendChild(iconElement);
+            titleIcon.appendChild(catergoryElement);
+            
+            const scoreElement = document.createElement('p');
+            scoreElement.innerHTML = `<p class="font-bold pale-blue-2 text-m"><span class="dark-gray-blue">${score}</span> / 100</p> `
+          
+            divSumary.appendChild(titleIcon);
+            divSumary.appendChild(scoreElement);
+            summary.appendChild(divSumary);
+        });
+    }
+    const getSumaries = async () =>{
+        const url = './data.json'
+        const result = await fetch(url);
+        const data = await result.json();
+        return data;
+    }
+  </script>
+</html>
